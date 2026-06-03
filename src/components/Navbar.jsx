@@ -120,7 +120,11 @@ const Navbar = () => {
           </div>
 
           {/* Right actions */}
-          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+          <div className={`flex items-center gap-1 p-1 rounded-full transition-all duration-500 ${
+            scrolled
+              ? 'bg-fasal-oat/50 dark:bg-fasal-ink/50 border border-fasal-sage/10'
+              : 'bg-fasal-sand/80 dark:bg-fasal-ink/60 border border-fasal-sage/15'
+          } backdrop-blur-md shadow-sm shrink-0`}>
             {/* Cart */}
             <button
               onClick={() => setShowCartDrawer(true)}
