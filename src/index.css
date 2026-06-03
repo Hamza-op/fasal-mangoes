@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  body {
+    @apply font-sans text-fasal-brown antialiased bg-fasal-sand;
+    background-image: linear-gradient(180deg, #f6ebdb 0%, #f1e5d1 48%, #ebdec8 100%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Organic grain — 2% feTurbulence overlay, full viewport */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.02;
+    z-index: 9999;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
+  }
+
+  /* Text selection */
+  ::selection {
+    background-color: rgba(214, 118, 65, 0.22);
+    color: #4E3629;
+  }
+
+  /* Headings: Fraunces display */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+}
+
+/* Scrollbars — Organic palette */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #E8DCC7;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #1D2310;
+}
+::-webkit-scrollbar-thumb {
+  background: #93A57F;
+  border-radius: 9999px;
+  border: 2px solid #E8DCC7;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #D8C19A;
+  border: 2px solid #1D2310;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D67641;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #C99535;
+}
+
+/* Marquee utility */
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
