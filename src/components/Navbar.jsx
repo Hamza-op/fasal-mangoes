@@ -58,10 +58,10 @@ const Navbar = () => {
   const currentPath = location.pathname;
   const actionButtonClass = scrolled
     ? "hover:bg-fasal-sage/10"
-    : "hover:bg-fasal-darkgreen/28 focus-visible:bg-fasal-darkgreen/28";
+    : "hover:bg-fasal-sage/15 dark:hover:bg-fasal-darkgreen/28";
   const actionIconClass = scrolled
     ? "text-fasal-darkgreen dark:text-gray-200"
-    : "text-[#FFF7DF] drop-shadow-[0_2px_6px_rgba(18,22,10,0.85)] dark:text-gray-200";
+    : "text-fasal-darkgreen dark:text-gray-200";
 
   return (
     <>
