@@ -76,7 +76,6 @@ const HomePage = () => {
               src={heroMobileImage}
               alt="Fresh Fasal mangoes arranged in a woven basket"
               className="absolute inset-0 h-full w-full object-cover object-[82%_18%]"
-              fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-fasal-sand dark:to-fasal-night" />
           </div>
@@ -113,8 +112,7 @@ const HomePage = () => {
             src={heroDesktopImage}
             alt="Fresh Fasal mangoes arranged in a woven basket"
             className="absolute inset-0 h-full w-full object-cover object-[66%_35%] lg:object-[68%_34%]"
-            fetchPriority="high"
-          />
+            />
           <div className="absolute inset-0 bg-gradient-to-b from-fasal-sand/28 via-fasal-sand/8 to-fasal-sand dark:from-fasal-night/45 dark:via-fasal-night/15 dark:to-fasal-night" />
           <div className="absolute inset-x-0 bottom-0 h-[68%] bg-gradient-to-t from-fasal-sand via-fasal-sand/92 to-transparent dark:from-fasal-night dark:via-fasal-night/92" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(232,220,199,0.18)_0%,rgba(232,220,199,0.08)_36%,rgba(232,220,199,0)_54%,rgba(232,220,199,0)_100%)] dark:bg-[linear-gradient(90deg,rgba(17,21,11,0.36)_0%,rgba(17,21,11,0.18)_36%,rgba(17,21,11,0)_54%,rgba(17,21,11,0)_100%)]" />
@@ -173,20 +171,20 @@ const HomePage = () => {
         initial="hidden"
         animate={trustControls}
         variants={stagger}
-        className="py-12 px-6"
+        className="py-12 px-4 sm:px-6"
       >
         <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 min-[430px]:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {trustSignals.map((signal, i) => (
               <motion.div
                 key={i}
                 variants={scaleIn}
-                className="flex h-full min-h-[118px] items-start gap-4 bg-fasal-oat/50 dark:bg-fasal-ink rounded-2xl p-5 border border-fasal-sage/10 hover:border-fasal-terracotta/20 transition-all duration-300"
+                className="flex h-full min-h-[108px] items-center gap-4 bg-fasal-oat/50 dark:bg-fasal-ink rounded-2xl p-4 sm:min-h-[118px] sm:p-5 border border-fasal-sage/10 hover:border-fasal-terracotta/20 transition-all duration-300"
               >
-                <div className="mt-0.5 w-12 h-12 rounded-2xl bg-fasal-terracotta/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-fasal-terracotta/10 flex items-center justify-center flex-shrink-0">
                   <signal.Icon className="w-5 h-5 text-fasal-terracotta" />
                 </div>
-                <div className="pt-0.5">
+                <div className="min-w-0">
                   <h3 className="font-display font-bold text-fasal-darkgreen dark:text-[#FAF3D6] text-sm leading-tight">{signal.title}</h3>
                   <p className="text-fasal-brown/60 dark:text-gray-400 text-xs mt-0.5 leading-snug">{signal.desc}</p>
                 </div>
@@ -202,7 +200,7 @@ const HomePage = () => {
         initial="hidden"
         animate={featuredControls}
         variants={stagger}
-        className="py-14 px-6 md:px-12 lg:px-20"
+        className="py-14 px-4 sm:px-6 md:px-12 lg:px-20"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div className="text-center mb-10" variants={fadeInUp}>
@@ -245,18 +243,18 @@ const HomePage = () => {
                       )}
 
                       {/* Overlay info at bottom of image */}
-                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
                         <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-1">
                           {product.name}
                         </h3>
                         <p className="text-white/70 text-sm font-sans line-clamp-1 mb-3">
                           {product.flavorProfile}
                         </p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-fasal-ochre font-bold text-lg font-display">
+                        <div className="flex flex-col items-start gap-3 min-[430px]:flex-row min-[430px]:items-center min-[430px]:justify-between">
+                          <span className="text-fasal-ochre font-bold text-lg font-display leading-none">
                             From Rs. {minPrice.toLocaleString('en-PK')}
                           </span>
-                          <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-bold group-hover:bg-fasal-terracotta transition-colors duration-300">
+                          <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-bold group-hover:bg-fasal-terracotta transition-colors duration-300 self-start">
                             View Details
                           </span>
                         </div>
@@ -358,7 +356,7 @@ const HomePage = () => {
         initial="hidden"
         animate={testimonialsControls}
         variants={stagger}
-        className="py-16 px-6 md:px-12 lg:px-20"
+        className="py-16 px-4 sm:px-6 md:px-12 lg:px-20"
       >
         <div className="max-w-6xl mx-auto">
           <motion.div className="text-center mb-10" variants={fadeInUp}>
@@ -373,7 +371,7 @@ const HomePage = () => {
               <motion.div
                 key={i}
                 variants={scaleIn}
-                className={`bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl p-8 border border-fasal-sage/10 ${
+                className={`bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl p-6 sm:p-8 border border-fasal-sage/10 ${
                   i === 1 ? 'md:mt-8' : ''
                 }`}
               >
@@ -399,8 +397,8 @@ const HomePage = () => {
       </motion.section>
 
       {/* ═══════ BOTTOM CTA — Bold gradient banner ═══════ */}
-      <section className="px-6 pb-14">
-        <div className="max-w-5xl mx-auto bg-gradient-to-br from-fasal-darkgreen to-fasal-moss rounded-3xl p-12 md:p-20 text-center relative overflow-hidden">
+      <section className="px-4 sm:px-6 pb-14">
+        <div className="max-w-5xl mx-auto bg-gradient-to-br from-fasal-darkgreen to-fasal-moss rounded-3xl px-6 py-10 sm:p-12 md:p-20 text-center relative overflow-hidden">
           {/* Grain */}
           <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
             style={{

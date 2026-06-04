@@ -128,7 +128,7 @@ const Navbar = () => {
             {/* Cart */}
             <button
               onClick={() => setShowCartDrawer(true)}
-              className={`relative p-2 sm:p-2.5 rounded-full transition-colors duration-300 ${actionButtonClass}`}
+              className={`relative h-11 w-11 rounded-full transition-colors duration-300 flex items-center justify-center ${actionButtonClass}`}
               aria-label="Open cart"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${actionIconClass}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -144,7 +144,7 @@ const Navbar = () => {
             {/* Dark mode */}
             <button
               onClick={toggleDarkMode}
-              className={`p-1.5 sm:p-2.5 rounded-full transition-all duration-300 ${actionButtonClass}`}
+              className={`h-11 w-11 rounded-full transition-all duration-300 flex items-center justify-center ${actionButtonClass}`}
               aria-label={darkMode ? "Light mode" : "Dark mode"}
             >
               {darkMode ? (
@@ -161,7 +161,7 @@ const Navbar = () => {
             {/* Mobile menu */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-2 sm:p-2.5 rounded-full transition-colors duration-300 ${actionButtonClass}`}
+              className={`md:hidden h-11 w-11 rounded-full transition-colors duration-300 flex items-center justify-center ${actionButtonClass}`}
               aria-label="Menu"
             >
               <svg className={`w-5 h-5 ${actionIconClass}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>

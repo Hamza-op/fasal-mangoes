@@ -29,6 +29,9 @@
     background-image: linear-gradient(180deg, #f6ebdb 0%, #f1e5d1 48%, #ebdec8 100%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overscroll-behavior-y: none;
+    text-rendering: optimizeLegibility;
+    touch-action: manipulation;
   }
 
   /* Organic grain — 2% feTurbulence overlay, full viewport */
@@ -97,4 +100,25 @@
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

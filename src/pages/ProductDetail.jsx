@@ -103,7 +103,7 @@ export default function ProductDetail() {
     >
       {/* Breadcrumb */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 mb-6">
-        <nav className="flex items-center gap-2 text-sm font-sans">
+        <nav className="flex items-center gap-2 overflow-hidden text-sm font-sans">
           <Link to="/" className="text-fasal-brown/60 dark:text-gray-400 hover:text-fasal-brown transition-colors duration-300">
             Home
           </Link>
@@ -112,7 +112,7 @@ export default function ProductDetail() {
             Shop
           </Link>
           <FiChevronRight className="w-3 h-3 text-fasal-brown/40 dark:text-gray-500" />
-          <span className="text-fasal-terracotta font-semibold">{product.name}</span>
+          <span className="min-w-0 truncate text-fasal-terracotta font-semibold">{product.name}</span>
         </nav>
       </div>
 
@@ -220,7 +220,7 @@ export default function ProductDetail() {
                       <button
                         key={v.id}
                         onClick={() => setSelectedVariant(v)}
-                        className={`px-3 sm:px-5 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all duration-300 ${
+                        className={`min-h-11 px-2 sm:px-5 py-3 rounded-2xl font-semibold text-xs sm:text-sm transition-all duration-300 ${
                           isSelected
                             ? 'bg-fasal-darkgreen text-fasal-sand'
                             : 'bg-fasal-oat/60 text-fasal-brown border border-fasal-sage/20 hover:border-fasal-terracotta/30'
@@ -295,12 +295,12 @@ export default function ProductDetail() {
                 return (
                   <div
                     key={i}
-                    className="flex flex-col items-center gap-2 text-center"
+                  className="flex h-full flex-col items-center gap-2 text-center"
                   >
                     <div className="w-10 h-10 rounded-2xl bg-fasal-terracotta/10 flex items-center justify-center">
                       <BadgeIcon className="w-5 h-5 text-fasal-terracotta" />
                     </div>
-                    <span className="text-[11px] sm:text-xs font-medium text-fasal-brown/70 dark:text-gray-400 font-sans leading-snug">
+                    <span className="text-[11px] sm:text-xs font-medium text-fasal-brown/70 dark:text-gray-400 font-sans leading-snug min-h-[2rem] flex items-center">
                       {badge.label}
                     </span>
                   </div>
@@ -328,11 +328,11 @@ export default function ProductDetail() {
             {detailItems.map((item, idx) => (
               <div
                 key={idx}
-                className="bg-fasal-oat/40 p-5 rounded-2xl border border-fasal-sage/10 dark:bg-gray-800"
+                className="bg-fasal-oat/40 p-5 rounded-2xl border border-fasal-sage/10 dark:bg-gray-800 h-full"
               >
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-2 mb-2 min-w-0">
                   <FiCheck className="w-4 h-4 text-fasal-terracotta flex-shrink-0" />
-                  <span className="text-xs font-bold text-fasal-brown/60 dark:text-gray-400 uppercase tracking-wider font-sans">
+                  <span className="min-w-0 truncate text-xs font-bold text-fasal-brown/60 dark:text-gray-400 uppercase tracking-wider font-sans">
                     {item.label}
                   </span>
                 </div>
@@ -347,7 +347,7 @@ export default function ProductDetail() {
           {(product.deliveryInfo || product.storageInstructions) && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {product.deliveryInfo && (
-                <div className="bg-fasal-oat/40 p-5 rounded-2xl border border-fasal-sage/10 dark:bg-gray-800">
+                <div className="bg-fasal-oat/40 p-5 rounded-2xl border border-fasal-sage/10 dark:bg-gray-800 h-full">
                   <div className="flex items-center gap-2 mb-2">
                     <FiTruck className="w-4 h-4 text-fasal-terracotta flex-shrink-0" />
                     <span className="text-xs font-bold text-fasal-brown/60 dark:text-gray-400 uppercase tracking-wider font-sans">Delivery</span>
@@ -356,7 +356,7 @@ export default function ProductDetail() {
                 </div>
               )}
               {product.storageInstructions && (
-                <div className="bg-fasal-oat/40 p-5 rounded-2xl border border-fasal-sage/10 dark:bg-gray-800">
+                <div className="bg-fasal-oat/40 p-5 rounded-2xl border border-fasal-sage/10 dark:bg-gray-800 h-full">
                   <div className="flex items-center gap-2 mb-2">
                     <FiShield className="w-4 h-4 text-fasal-terracotta flex-shrink-0" />
                     <span className="text-xs font-bold text-fasal-brown/60 dark:text-gray-400 uppercase tracking-wider font-sans">Storage</span>
@@ -394,7 +394,7 @@ export default function ProductDetail() {
                     to={`/shop/${rp.slug}`}
                     className="group block"
                   >
-                    <div className="bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl overflow-hidden border border-fasal-sage/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300">
+                    <div className="bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl overflow-hidden border border-fasal-sage/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 h-full">
                       <div className="relative w-full aspect-square overflow-hidden">
                         <img
                           src={rp.image}

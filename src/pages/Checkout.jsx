@@ -186,7 +186,7 @@ export default function Checkout() {
           <div className="lg:col-span-2 space-y-6">
             <form onSubmit={handlePlaceOrder} className="space-y-6">
               {/* Delivery Details Card */}
-              <div className="bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl p-6 border border-fasal-sage/10">
+              <div className="bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl p-5 sm:p-6 border border-fasal-sage/10">
                 <h2 className="text-xl font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-display mb-4 pb-3 border-b border-fasal-sage/10">
                   Delivery Details
                 </h2>
@@ -240,7 +240,7 @@ export default function Checkout() {
               </div>
 
               {/* Payment Flow Information */}
-              <div className="bg-fasal-oat/20 dark:bg-gray-800 rounded-3xl p-6 border border-fasal-sage/10 space-y-5 shadow-sm">
+              <div className="bg-fasal-oat/20 dark:bg-gray-800 rounded-3xl p-5 sm:p-6 border border-fasal-sage/10 space-y-5 shadow-sm">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-4">
                 <h3 className="text-lg font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-display">
                   Simple Payment Process
@@ -252,21 +252,21 @@ export default function Checkout() {
               </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                  <div className="bg-fasal-sand/40 dark:bg-gray-700/40 p-5 rounded-2xl border border-fasal-sage/5 space-y-2">
+                  <div className="bg-fasal-sand/40 dark:bg-gray-700/40 p-5 rounded-2xl border border-fasal-sage/5 space-y-2 h-full">
                     <FiAward className="w-5 h-5 text-fasal-terracotta" />
                     <h4 className="font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-sans">1. Place Your Order</h4>
                     <p className="text-fasal-brown/80 dark:text-gray-300 font-sans leading-relaxed">
                       Add your delivery details and send the order through WhatsApp.
                     </p>
                   </div>
-                  <div className="bg-fasal-sand/40 dark:bg-gray-700/40 p-5 rounded-2xl border border-fasal-sage/5 space-y-2">
+                  <div className="bg-fasal-sand/40 dark:bg-gray-700/40 p-5 rounded-2xl border border-fasal-sage/5 space-y-2 h-full">
                     <FiCreditCard className="w-5 h-5 text-fasal-terracotta" />
                     <h4 className="font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-sans">2. Pay 30% Advance</h4>
                     <p className="text-fasal-brown/80 dark:text-gray-300 font-sans leading-relaxed">
                       We share the payment details on WhatsApp and reserve your harvest slot.
                     </p>
                   </div>
-                  <div className="bg-fasal-sand/40 dark:bg-gray-700/40 p-5 rounded-2xl border border-fasal-sage/5 space-y-2">
+                  <div className="bg-fasal-sand/40 dark:bg-gray-700/40 p-5 rounded-2xl border border-fasal-sage/5 space-y-2 h-full">
                     <FiTruck className="w-5 h-5 text-fasal-terracotta" />
                     <h4 className="font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-sans">3. Receive & Pay Balance</h4>
                     <p className="text-fasal-brown/80 dark:text-gray-300 font-sans leading-relaxed">
@@ -277,21 +277,21 @@ export default function Checkout() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="bg-fasal-sand/80 dark:bg-gray-700 rounded-2xl p-5 border border-fasal-sage/10 space-y-3 font-sans">
-                    <div className="flex justify-between items-center text-xs font-semibold text-fasal-brown/80 dark:text-gray-300">
+                    <div className="flex items-center justify-between gap-3 text-xs font-semibold text-fasal-brown/80 dark:text-gray-300">
                       <span>Order Subtotal:</span>
                       <span>Rs. {subtotal.toLocaleString('en-PK')}</span>
                     </div>
-                    <div className="flex justify-between items-center text-xs font-semibold text-fasal-moss">
+                    <div className="flex items-center justify-between gap-3 text-xs font-semibold text-fasal-moss">
                       <span>Nationwide Delivery:</span>
                       <span className="uppercase font-bold">FREE</span>
                     </div>
-                    <div className="flex justify-between items-center bg-fasal-terracotta/5 dark:bg-fasal-terracotta/10 px-4 py-3 rounded-xl border border-fasal-terracotta/20">
+                    <div className="flex flex-col items-start gap-1 bg-fasal-terracotta/5 dark:bg-fasal-terracotta/10 px-4 py-3 rounded-xl border border-fasal-terracotta/20 min-[430px]:flex-row min-[430px]:items-center min-[430px]:justify-between">
                       <span className="font-bold text-fasal-terracotta text-sm">Advance Due Now:</span>
-                      <span className="text-lg font-bold text-fasal-terracotta font-display">
+                      <span className="text-lg font-bold text-fasal-terracotta font-display leading-none">
                         Rs. {advancePayment.toLocaleString('en-PK')}
                       </span>
                     </div>
-                    <div className="flex justify-between items-center text-xs font-semibold text-fasal-brown/65 dark:text-gray-400">
+                    <div className="flex items-center justify-between gap-3 text-xs font-semibold text-fasal-brown/65 dark:text-gray-400">
                       <span>Cash on Delivery:</span>
                       <span>Rs. {remainingPayment.toLocaleString('en-PK')}</span>
                     </div>
@@ -334,7 +334,7 @@ export default function Checkout() {
 
           {/* Order Summary (Right Column) */}
           <div className="lg:col-span-1">
-            <div className="bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl p-6 border border-fasal-sage/10 sticky top-24">
+            <div className="bg-fasal-oat/40 dark:bg-gray-800 rounded-3xl p-5 sm:p-6 border border-fasal-sage/10 sticky top-24">
               <h2 className="text-xl font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-display mb-4 pb-3 border-b border-fasal-sage/10">
                 Order Summary
               </h2>
@@ -379,9 +379,9 @@ export default function Checkout() {
               </div>
 
               {/* Total */}
-              <div className="bg-fasal-sand/60 dark:bg-gray-700/50 rounded-2xl p-4 mb-5 flex justify-between items-center border border-fasal-sage/10">
+              <div className="bg-fasal-sand/60 dark:bg-gray-700/50 rounded-2xl p-4 mb-5 flex flex-col items-start gap-1 border border-fasal-sage/10 min-[430px]:flex-row min-[430px]:items-center min-[430px]:justify-between">
                 <span className="text-sm font-semibold text-fasal-brown dark:text-gray-300 font-sans">Total</span>
-                <span className="text-2xl font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-display">
+                <span className="text-2xl font-bold text-fasal-darkgreen dark:text-[#FAF3D6] font-display leading-none">
                   Rs. {total.toLocaleString('en-PK')}
                 </span>
               </div>

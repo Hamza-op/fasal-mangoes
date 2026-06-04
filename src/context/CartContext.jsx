@@ -49,11 +49,20 @@ const cartReducer = (state, action) => {
       };
 
     case 'UPDATE_QUANTITY': {
+      if (action.payload.quantity <= 0) {
+        return {
+          ...state,
+          items: state.items.filter(item =>
+            !(item.productId === action.payload.productId && item.variantId === action.payload.variantId)
+          )
+        };
+      }
+
       return {
         ...state,
         items: state.items.map(item =>
           (item.productId === action.payload.productId && item.variantId === action.payload.variantId)
-            ? { ...item, quantity: Math.max(1, action.payload.quantity) }
+            ? { ...item, quantity: action.payload.quantity }
             : item
         )
       };

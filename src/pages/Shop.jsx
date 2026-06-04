@@ -108,11 +108,11 @@ export default function Shop() {
 
                       {/* Info */}
                       <div className="p-5 flex-shrink-0">
-                        <div className="flex items-center justify-between mb-2">
-                          <h3 className="font-display text-lg font-bold text-fasal-darkgreen dark:text-[#FAF3D6] group-hover:text-fasal-terracotta transition-colors duration-300">
+                        <div className="flex flex-col items-start gap-1.5 min-[430px]:flex-row min-[430px]:items-start min-[430px]:justify-between mb-2">
+                          <h3 className="font-display text-lg font-bold text-fasal-darkgreen dark:text-[#FAF3D6] group-hover:text-fasal-terracotta transition-colors duration-300 leading-tight">
                             {product.name}
                           </h3>
-                          <span className="text-fasal-terracotta font-display font-bold text-lg">
+                          <span className="text-fasal-terracotta font-display font-bold text-lg leading-none min-[430px]:text-right min-[430px]:shrink-0">
                             Rs. {price.toLocaleString('en-PK')}
                           </span>
                         </div>
@@ -121,11 +121,11 @@ export default function Shop() {
                           {product.flavorProfile}
                         </p>
 
-                        <div className="flex items-center justify-between">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-fasal-darkgreen/50 dark:text-gray-500">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className="min-w-0 truncate text-[10px] font-bold uppercase tracking-wider text-fasal-darkgreen/50 dark:text-gray-500">
                             {product.origin.split(',')[0]}
                           </span>
-                          <span className="text-fasal-terracotta font-sans text-xs font-semibold group-hover:translate-x-0.5 transition-transform duration-300 inline-flex items-center gap-1">
+                          <span className="text-fasal-terracotta font-sans text-xs font-semibold group-hover:translate-x-0.5 transition-transform duration-300 inline-flex items-center gap-1 shrink-0">
                             View <FiArrowRight className="w-3 h-3" />
                           </span>
                         </div>
@@ -140,7 +140,7 @@ export default function Shop() {
       </section>
 
       {/* ═══════ WHY FASAL — Three pillars ═══════ */}
-      <section className="px-6 py-14 border-t border-fasal-sage/10 dark:border-gray-800">
+      <section className="px-4 sm:px-6 py-14 border-t border-fasal-sage/10 dark:border-gray-800">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-fasal-darkgreen dark:text-[#FAF3D6] mb-3">
@@ -161,7 +161,7 @@ export default function Shop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-fasal-oat/30 dark:bg-gray-800 p-8 rounded-3xl border border-fasal-sage/10 text-center"
+                className="bg-fasal-oat/30 dark:bg-gray-800 p-6 sm:p-8 rounded-3xl border border-fasal-sage/10 text-center"
               >
                 <div className="w-14 h-14 rounded-2xl bg-fasal-terracotta/10 flex items-center justify-center mx-auto mb-5">
                   <card.Icon className="w-6 h-6 text-fasal-terracotta" />

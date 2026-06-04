@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -14,6 +14,21 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Shipping from './pages/Shipping';
 import { CartProvider } from './context/CartContext';
+
+function SupportWidgets() {
+  const { pathname } = useLocation();
+  const isCheckout = pathname === '/checkout';
+  const isProductPage = pathname.startsWith('/shop/');
+
+  if (isCheckout) return null;
+
+  return (
+    <>
+      <WhatsAppButton compact={isProductPage} />
+      <Chatbot compact={isProductPage} />
+    </>
+  );
+}
 
 function App() {
   return (
@@ -32,8 +47,7 @@ function App() {
           <Route path="/shipping" element={<Shipping />} />
         </Routes>
         <Footer />
-        <WhatsAppButton />
-        <Chatbot />
+        <SupportWidgets />
       </Router>
     </CartProvider>
   );

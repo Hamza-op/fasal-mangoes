@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiX, FiMinus, FiPlus, FiTrash2 } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
 
 export default function CartDrawer({ isOpen, onClose }) {
   const { cart, totalPrice, removeItem, updateQuantity } = useCart();
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousOverscroll = document.body.style.overscrollBehavior;
+    document.body.style.overflow = 'hidden';
+    document.body.style.overscrollBehavior = 'contain';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.overscrollBehavior = previousOverscroll;
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -18,29 +32,34 @@ export default function CartDrawer({ isOpen, onClose }) {
 
       {/* Drawer */}
       <div
-        className={`fixed right-0 top-0 h-full w-full md:w-96 bg-fasal-sand dark:bg-fasal-ink shadow-2xl z-50 transform transition-transform duration-500 ease-out overflow-y-auto ${
+        className={`fixed right-0 top-0 h-[100dvh] w-full md:w-96 bg-fasal-sand dark:bg-fasal-ink shadow-2xl z-50 transform transition-transform duration-300 ease-out flex flex-col will-change-transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
+        role={isOpen ? 'dialog' : undefined}
+        aria-modal={isOpen ? 'true' : undefined}
+        aria-hidden={!isOpen}
+        aria-label="Shopping cart"
       >
         {/* Header */}
-        <div className="sticky top-0 bg-fasal-darkgreen text-fasal-sand px-6 py-4 flex items-center justify-between z-10">
+        <div className="bg-fasal-darkgreen text-fasal-sand px-5 sm:px-6 py-4 flex items-center justify-between z-10 shrink-0">
           <h2 className="font-display text-2xl font-bold">Your Cart</h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-fasal-sand/10 rounded-2xl transition-colors duration-300"
+            className="h-11 w-11 hover:bg-fasal-sand/10 rounded-2xl transition-colors duration-300 flex items-center justify-center"
+            aria-label="Close cart"
           >
             <FiX size={24} />
           </button>
         </div>
 
         {/* Cart Items */}
-        <div className="px-6 py-6">
+        <div className="flex-1 overflow-y-auto overscroll-contain px-5 sm:px-6 py-5 sm:py-6">
           {cart.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12">
               <p className="font-sans text-fasal-brown dark:text-gray-300 text-center mb-4">Your cart is empty</p>
               <button
                 onClick={onClose}
-                className="bg-fasal-darkgreen text-fasal-sand px-4 py-2 rounded-2xl font-sans font-semibold hover:bg-fasal-moss transition-colors duration-300"
+                className="bg-fasal-darkgreen text-fasal-sand px-5 py-3 rounded-2xl font-sans font-semibold hover:bg-fasal-moss transition-colors duration-300"
               >
                 Continue Shopping
               </button>
@@ -77,7 +96,8 @@ export default function CartDrawer({ isOpen, onClose }) {
                         onClick={() =>
                           updateQuantity(item.productId, item.variantId, item.quantity - 1)
                         }
-                        className="p-1 hover:bg-fasal-sand dark:hover:bg-gray-500 rounded-full transition-colors duration-300"
+                        className="h-10 w-10 hover:bg-fasal-sand dark:hover:bg-gray-500 rounded-full transition-colors duration-300 flex items-center justify-center"
+                        aria-label={`Decrease ${item.productName} quantity`}
                       >
                         <FiMinus size={16} className="text-fasal-darkgreen dark:text-gray-200" />
                       </button>
@@ -88,14 +108,16 @@ export default function CartDrawer({ isOpen, onClose }) {
                         onClick={() =>
                           updateQuantity(item.productId, item.variantId, item.quantity + 1)
                         }
-                        className="p-1 hover:bg-fasal-sand dark:hover:bg-gray-500 rounded-full transition-colors duration-300"
+                        className="h-10 w-10 hover:bg-fasal-sand dark:hover:bg-gray-500 rounded-full transition-colors duration-300 flex items-center justify-center"
+                        aria-label={`Increase ${item.productName} quantity`}
                       >
                         <FiPlus size={16} className="text-fasal-darkgreen dark:text-gray-200" />
                       </button>
                     </div>
                     <button
                       onClick={() => removeItem(item.productId, item.variantId)}
-                      className="p-2 text-fasal-terracotta hover:bg-fasal-terracotta/10 rounded-2xl transition-colors duration-300"
+                      className="h-11 w-11 text-fasal-terracotta hover:bg-fasal-terracotta/10 rounded-2xl transition-colors duration-300 flex items-center justify-center"
+                      aria-label={`Remove ${item.productName} from cart`}
                     >
                       <FiTrash2 size={18} />
                     </button>
@@ -108,7 +130,7 @@ export default function CartDrawer({ isOpen, onClose }) {
 
         {/* Footer */}
         {cart.length > 0 && (
-          <div className="sticky bottom-0 bg-fasal-sand dark:bg-fasal-ink border-t border-fasal-sage/20 dark:border-gray-700 px-6 py-6 space-y-3">
+          <div className="bg-fasal-sand dark:bg-fasal-ink border-t border-fasal-sage/20 dark:border-gray-700 px-5 sm:px-6 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))] space-y-3 shrink-0 shadow-[0_-12px_28px_rgba(18,22,10,0.08)]">
             {/* Total */}
             <div className="flex justify-between items-center mb-4 pb-4 border-b border-fasal-sage/20 dark:border-gray-700">
               <span className="font-sans text-lg font-bold text-fasal-darkgreen dark:text-[#FAF3D6]">Total:</span>
@@ -120,14 +142,14 @@ export default function CartDrawer({ isOpen, onClose }) {
             {/* Action Buttons */}
             <Link
               to="/checkout"
-              className="block w-full bg-fasal-terracotta text-white py-3 px-4 rounded-2xl font-sans font-bold hover:bg-fasal-terracotta/90 transition-colors duration-300 text-center"
+              className="block w-full bg-fasal-terracotta text-white py-4 px-4 rounded-2xl font-sans font-bold hover:bg-fasal-terracotta/90 transition-colors duration-300 text-center"
               onClick={onClose}
             >
               Proceed to Checkout
             </Link>
             <button
               onClick={onClose}
-              className="w-full bg-fasal-oat dark:bg-gray-600 text-fasal-darkgreen dark:text-[#FAF3D6] py-3 px-4 rounded-2xl font-sans font-bold hover:bg-fasal-oat/80 dark:hover:bg-gray-500 transition-colors duration-300"
+              className="w-full bg-fasal-oat dark:bg-gray-600 text-fasal-darkgreen dark:text-[#FAF3D6] py-3.5 px-4 rounded-2xl font-sans font-bold hover:bg-fasal-oat/80 dark:hover:bg-gray-500 transition-colors duration-300"
             >
               Continue Shopping
             </button>
