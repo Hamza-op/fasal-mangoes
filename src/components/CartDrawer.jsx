@@ -34,7 +34,7 @@ export default function CartDrawer({ isOpen, onClose }) {
       <div
         className={`fixed right-0 top-0 h-[100dvh] w-full md:w-96 bg-fasal-sand dark:bg-fasal-ink shadow-2xl z-50 transform transition-transform duration-300 ease-out flex flex-col will-change-transform ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+        } ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
         role={isOpen ? 'dialog' : undefined}
         aria-modal={isOpen ? 'true' : undefined}
         aria-hidden={!isOpen}
